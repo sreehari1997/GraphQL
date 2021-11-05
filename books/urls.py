@@ -1,3 +1,9 @@
-from django.urls import path, include
+from django.urls import path
+from graphene.types import schema
+from graphene_django.views import GraphQLView
+from books.schema import schema
 
-urlpatterns = []
+
+urlpatterns = [
+    path('graphql/', GraphQLView.as_view(graphiql=True, schema=schema)),
+]
